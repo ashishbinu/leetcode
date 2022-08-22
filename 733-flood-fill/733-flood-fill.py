@@ -1,19 +1,25 @@
 class Solution:
-    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int,initial_color=None) -> List[List[int]]:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        def floodfill(image,row,col):
+            if row < 0 or row >= row_len: return
+            if col < 0 or col >= col_len: return
+            if image[row][col] != icolor: return image
+            if image[row][col] == fcolor: return image
+
+            image[row][col] = color
+
+            floodfill(image, row-1, col)
+            floodfill(image, row+1, col)
+            floodfill(image, row, col-1)
+            floodfill(image, row, col+1)
+
+            return image
         
-        if initial_color is None:
-            initial_color = image[sr][sc]
+        icolor = image[sr][sc]
+        fcolor = color
+        row_len = len(image)
+        col_len = len(image[0])
+        return floodfill(image,sr,sc)
         
-        nr = len(image) - 1
-        nc = len(image[0]) - 1
-        if sr < 0 or sc < 0 or sr > nr or sc > nc or image[sr][sc] != initial_color or image[sr][sc]==color: return image
         
-        image[sr][sc] = color
-        
-        self.floodFill(image,sr-1,sc,color,initial_color)
-        self.floodFill(image,sr+1,sc,color,initial_color)
-        self.floodFill(image,sr,sc-1,color,initial_color)
-        self.floodFill(image,sr,sc+1,color,initial_color)
-        
-        return image
         
