@@ -3,7 +3,7 @@ class Solution:
         def floodfill(image,row,col):
             if row < 0 or row >= row_len: return
             if col < 0 or col >= col_len: return
-            if image[row][col] != icolor: return image
+            if image[row][col] != icolor: return
             if image[row][col] == fcolor: return image
 
             image[row][col] = color
