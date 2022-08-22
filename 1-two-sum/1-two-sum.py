@@ -4,6 +4,6 @@ class Solution:
         numdict = {}
         
         for i,v in enumerate(nums):
-            if target - v in numdict:
-                return [i,numdict[target-v]]
+            sval = target - v 
+            if sval in numdict: return [i,numdict[sval]]
             numdict[v] = i
