@@ -1,14 +1,15 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        # counter subtraction removes negative count
-        return not Counter(ransomNote) - Counter(magazine)
         
-        # # using builtin Counter object to speed up the algorithm
-        # counter = Counter(magazine)
-        # counter.subtract(ransomNote)
-        # # Finds the least common element that is negative
-        # if counter.most_common()[-1][1] < 0: return False
-        # return True
+        # using builtin Counter object to speed up the algorithm
+        counter = Counter(magazine)
+        counter.subtract(ransomNote)
+        # Finds the least common element that is negative
+        if counter.most_common()[-1][1] < 0: return False
+        return True
+        
+        # counter subtraction removes negative count
+        # return not Counter(ransomNote) - Counter(magazine)
         
         # # time - O(n) , space - O(n)
         # if len(ransomNote) > len(magazine): return False
