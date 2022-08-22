@@ -3,6 +3,7 @@ class Solution:
         # using builtin Counter object to speed up the algorithm
         counter = Counter(magazine)
         counter.subtract(ransomNote)
+        # Finds the least common element that is negative
         if counter.most_common()[-1][1] < 0: return False
         return True
         
