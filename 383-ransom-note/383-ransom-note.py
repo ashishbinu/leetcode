@@ -10,9 +10,7 @@ class Solution:
         for b in ransomNote:
             if b not in counter: counter[b] = 0
             counter[b] -= 1
-                
-        for c in ransomNote:
-            if counter[c] < 0: return False
+            if counter[b] < 0: return False
         
         return True
         
