@@ -25,9 +25,7 @@ class Solution:
         #     
         # return list3.next
         
-        res = ListNode()
-        back = res
-        back.next = list1
+        res = back = ListNode(next=list1) #dummy head node
         
         
         while list1 and list2:
