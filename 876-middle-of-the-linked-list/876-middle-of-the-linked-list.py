@@ -7,7 +7,6 @@ class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         i = j = head
         while j and j.next:
-            # if j.next is None: break
             i = i.next
             j = j.next.next
             
