@@ -6,6 +6,24 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
+        
+        # No extra space used - merging in place
+        res = back = ListNode(next=list1) #dummy head node
+        
+        while list1 and list2:
+            if list2.val < list1.val:
+                back.next = list2
+                back = list2
+                list2 = list2.next
+                back.next = list1
+            else:
+                back = list1
+                list1 = list1.next
+                
+        if list2: back.next = list2        
+            
+        return res.next
+    
         # # Creating new list space - O(n)
         # list3 = ptr = ListNode()
         # 
@@ -24,22 +42,3 @@ class Solution:
         # if list2: ptr.next = list2
         #     
         # return list3.next
-        
-        res = back = ListNode(next=list1) #dummy head node
-        
-        
-        while list1 and list2:
-            
-            if list2.val < list1.val:
-                back.next = list2
-                tmp = list2.next
-                list2.next = list1
-                back = list2
-                list2 = tmp
-            else:
-                back = list1
-                list1 = list1.next
-                
-        if list2: back.next = list2        
-            
-        return res.next
