@@ -18,14 +18,10 @@ class Solution:
             
             tmp = tmp.next
         
-        while list1 is not None:
-            tmp.next = ListNode(list1.val)
-            list1 = list1.next
-            tmp = tmp.next
+        if list1 is not None:
+            tmp.next = list1
             
-        while list2 is not None:
-            tmp.next = ListNode(list2.val)
-            list2 = list2.next
-            tmp = tmp.next
+        if list2 is not None:
+            tmp.next = list2
             
         return list3.next
