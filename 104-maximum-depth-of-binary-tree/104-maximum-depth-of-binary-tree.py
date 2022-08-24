@@ -6,6 +6,13 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if root is None: return 0
-        return 1 + max(self.maxDepth(root.right),self.maxDepth(root.left))
+        # still not tail recursion I think
+        def maxdepth(root,d):
+            if root is None: return d
+            return max(maxdepth(root.left,d+1),maxdepth(root.right,d+1))
+        return maxdepth(root,0)
+            
+        # not tail recursion
+        # if root is None: return 0
+        # return 1 + max(self.maxDepth(root.right),self.maxDepth(root.left))
         
