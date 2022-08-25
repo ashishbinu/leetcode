@@ -3,11 +3,11 @@ class Solution:
         
         # It's basically fibonacci
         
-        if n == 0: return 1
-        if n < 0: return 0
+        def cs(n,a,b):
+            if n == 0: return a
+            if n == 1: return b
+            
+            return cs(n-1,b,a+b)
         
-        if n not in memo:
-            memo[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
-        
-        return memo[n]
+        return cs(n,1,1)
         
