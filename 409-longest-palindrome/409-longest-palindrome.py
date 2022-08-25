@@ -1,20 +1,34 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        counter = {}
-        for v in s:
-            if v not in counter: counter[v] = 0
-            counter[v] += 1
+        # 1 pass solution
         
+        hashset = set()
         res = 0
-        flag = False
-        for k,v in counter.items():
-            if v%2 == 0:
-                res += v
-                counter[k] -= v
+        for v in s:
+            if v not in hashset:
+                hashset.add(v)
             else:
-                res += v - 1
-                counter[k] -= v - 1
-                flag = True
-        if flag: res += 1
-            
+                hashset.remove(v)
+                res += 2
+                
+        if len(hashset) != 0: res += 1
         return res
+        
+        # # 2 pass solution
+        # # time - O(n) , space - O(n)
+        # counter = {}
+        # for v in s:
+        #     if v not in counter: counter[v] = 0
+        #     counter[v] += 1
+        # 
+        # res = 0
+        # flag = False
+        # for k,v in counter.items():
+        #     if v%2 == 0:
+        #         res += v
+        #     else:
+        #         res += v - 1
+        #         flag = True
+        # if flag: res += 1
+        #     
+        # return res
