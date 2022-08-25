@@ -6,8 +6,8 @@ class Solution:
         while r < len(prices):
             profit = prices[r] - prices[l]
             if profit < 0:
-                l = r
-            max_profit = max(profit,max_profit)
+                l = r # this sets it to new low
+            max_profit = profit if profit > max_profit else max_profit
             r += 1
         return max_profit
     
