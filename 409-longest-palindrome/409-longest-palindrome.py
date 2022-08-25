@@ -1,6 +1,6 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        # 1 pass solution
+        # 1 pass - time - O(n) , space - O(n)
         
         hashset = set()
         res = 0
