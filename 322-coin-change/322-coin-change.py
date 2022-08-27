@@ -11,8 +11,7 @@ class Solution:
             for i in coins:
                 v = coinchange(x-i)
                 if not v < 0:
-                    if min_val is None: min_val = v
-                    min_val = min(min_val,v)
+                    if min_val is None or v < min_val: min_val = v
             if min_val is not None:
                 dp[x] = 1 + min_val
             else:
