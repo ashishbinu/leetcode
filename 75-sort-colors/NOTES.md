@@ -5,3 +5,5 @@
 * i pointer lies between left and right pointer.
 * It swaps the current value with left or right pointer if 0 or 2 respectively otherwise increment the i pointer.
 * This then swaps the array.
+​
+This is also called **Dutch National Flag Sort**
