@@ -5,8 +5,7 @@ class Solution:
         dp[0] = True
         for i in range(1,n):
             for j in reversed(range(i)):
-                if nums[j] >= i - j and dp[j]:
-                    dp[i] = True
-                    break
+                dp[i] = dp[j] and nums[j] >= i - j
+                if dp[i]: break
 
         return dp[n-1]
