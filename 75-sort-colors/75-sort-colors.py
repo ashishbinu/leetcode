@@ -7,17 +7,13 @@ class Solution:
         i = l = 0
         r = n - 1
         
-        while i < r:
-            while nums[l] == 0:
-                l+=1 
-                if l >= n or l > r: return 
-            while nums[r] == 2:
-                r-=1 
-                if r < 0 or l > r: return
-            if i < l: i = l    
-            while nums[i] == 1:
-                i+=1 
-                if i > r: return
-                
-            if nums[i] == 2: nums[i],nums[r] = nums[r],nums[i]
-            elif nums[i] == 0: nums[i],nums[l] = nums[l],nums[i]
+        while i <= r:
+            if nums[i] == 0:
+                nums[i],nums[l] = nums[l],nums[i]
+                l += 1
+                i += 1
+            elif nums[i] == 2:
+                nums[i],nums[r] = nums[r],nums[i]
+                r -= 1
+            else:
+                i += 1
