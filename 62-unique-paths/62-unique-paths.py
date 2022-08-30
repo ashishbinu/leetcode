@@ -1,6 +1,7 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        # prev array is not needed all values are in the curr array
+        # prev list not needed, curr list is enough
+        # time - O(m*n) , space - O(n)
         curr = [1] * n
         for i in range(1,m):
             for j in range(n):
