@@ -1,14 +1,21 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        # iterative dp with space optimisation
-        prev = [1] * n
+        # prev array is not needed all values are in the curr array
         curr = [1] * n
         for i in range(1,m):
             for j in range(n):
-                curr[j] = prev[j]
                 if j-1 >= 0: curr[j] += curr[j-1]
-            prev = curr
         return curr[n-1]
+        
+        # # iterative dp with space optimisation
+        # prev = [1] * n
+        # curr = [1] * n
+        # for i in range(1,m):
+        #     for j in range(n):
+        #         curr[j] = prev[j]
+        #         if j-1 >= 0: curr[j] += curr[j-1]
+        #     prev = curr
+        # return curr[n-1]
         
         # # iterative dp space-O(m*n)
         # dp = [[0 for _ in range(n)] for _ in range(m)]
