@@ -4,8 +4,8 @@ class Solution:
         # time - O(m*n) , space - O(n)
         curr = [1] * n
         for i in range(1,m):
-            for j in range(n):
-                if j-1 >= 0: curr[j] += curr[j-1]
+            for j in range(1,n):
+                curr[j] += curr[j-1]
         return curr[n-1]
         
         # # iterative dp with space optimisation
