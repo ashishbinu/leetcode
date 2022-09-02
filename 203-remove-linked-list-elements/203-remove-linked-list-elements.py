@@ -8,25 +8,12 @@ class Solution:
         
         # recursive
         if head is None: return head
-        
         nxt = self.removeElements(head.next,val)
-        
         if head.val == val: return nxt
-        
         head.next = nxt
         return head
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
+        # iterative
         # res = ListNode(next = head) # dummy node
         # 
         # curr = head
