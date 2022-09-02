@@ -6,18 +6,39 @@
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         
-        res = ListNode(next = head) # dummy node
+        # recursive
+        if head is None: return head
         
-        curr = head
-        prev = res
+        nxt = self.removeElements(head.next,val)
         
-        while curr is not None:
-            if curr.val == val:
-                curr = prev.next = curr.next
-                continue
-                
-            prev = curr
-            curr = curr.next
-            
-        return res.next
+        if head.val == val: return nxt
         
+        head.next = nxt
+        return head
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        # res = ListNode(next = head) # dummy node
+        # 
+        # curr = head
+        # prev = res
+        # 
+        # while curr is not None:
+        #     if curr.val == val:
+        #         curr = prev.next = curr.next
+        #         continue
+        #         
+        #     prev = curr
+        #     curr = curr.next
+        #     
+        # return res.next
+        # 
