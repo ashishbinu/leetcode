@@ -13,8 +13,9 @@ class Solution:
         
         while curr is not None:
             if curr.val == val:
-                prev.next = curr.next
-                curr = prev
+                curr = prev.next = curr.next
+                continue
+                
             prev = curr
             curr = curr.next
             
