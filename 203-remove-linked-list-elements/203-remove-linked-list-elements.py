@@ -13,7 +13,7 @@ class Solution:
         while curr is not None:
             if curr.val == val:
                 curr = prev.next = curr.next
-                continue
+                curr = prev
             prev = curr
             curr = curr.next
             
