@@ -3,7 +3,7 @@ class Solution:
         # dp[i] represents min cost to reach ith position
         n = len(cost)
         
-        a,b = 0,0 # a = dp[0], b = dp[1]
+        a, b = 0, 0 # a = dp[0], b = dp[1]
         
         for i in range(2,n+1):
             v2 = b + cost[i-1]
