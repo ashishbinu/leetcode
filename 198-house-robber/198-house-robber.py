@@ -3,7 +3,6 @@ class Solution:
         # dp[i] represents the max amt of money to steal from 0..i houses such that no two houses are adjacent and stole from the ith house
         # dp[0] = nums[0]
         # dp[1] = nums[1]
-        dp = {}
         a,b = 0,0
         n = len(nums)
         
