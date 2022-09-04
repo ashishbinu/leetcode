@@ -5,23 +5,41 @@
 #         self.next = next
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # iterative
+        # iterative 
+        # reducing one if condition with nxt variable
         prev = ListNode(next=head) # dummy node
         curr = head
         res = prev
         
-        while curr:
-            nxt  = curr.next
-            if nxt is None: break
-
+        while curr and curr.next:
+                
+            nxt = curr.next
             curr.next = nxt.next
             nxt.next = curr
             prev.next = nxt
-
+            
             prev = curr
             curr = curr.next
          
         return res.next
+        
+        # # iterative
+        # prev = ListNode(next=head) # dummy node
+        # curr = head
+        # res = prev
+        # 
+        # while curr:
+        #     nxt  = curr.next
+        #     if nxt is None: break
+# 
+        #     curr.next = nxt.next
+        #     nxt.next = curr
+        #     prev.next = nxt
+# 
+        #     prev = curr
+        #     curr = curr.next
+        #  
+        # return res.next
         
         # # recursive
         # if head is None or head.next is None: return head
