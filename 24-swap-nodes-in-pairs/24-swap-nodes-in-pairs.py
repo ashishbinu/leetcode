@@ -6,11 +6,9 @@
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # iterative
-        if head is None or head.next is None: return head
-        
-        prev = ListNode(next=head)
+        prev = ListNode(next=head) # dummy node
         curr = head
-        new_head = curr.next
+        res = prev
         
         while curr:
             nxt  = curr.next
@@ -22,8 +20,8 @@ class Solution:
 
             prev = curr
             curr = curr.next
-        
-        return new_head
+         
+        return res.next
         
         # # recursive
         # if head is None or head.next is None: return head
