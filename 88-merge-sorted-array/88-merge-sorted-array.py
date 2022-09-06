@@ -9,15 +9,12 @@ class Solution:
         b = nums2
         i = m - 1
         j = n - 1
-        k = i + j + 1
         while i >= 0 or j >= 0:
             if j==-1 or (i >= 0 and a[i] > b[j]):
-                a[k] = a[i]
+                a[i+j+1] = a[i]
                 i -= 1
-                k -= 1
             else:
-                a[k] = b[j]
+                a[i+j+1] = b[j]
                 j -= 1
-                k -= 1
                 
             
