@@ -5,16 +5,15 @@ class Solution:
         """
         # sort it from the back of list1
         
-        a = nums1
-        b = nums2
         i = m - 1
         j = n - 1
         while i >= 0 or j >= 0:
-            if j==-1 or (i >= 0 and a[i] > b[j]):
-                a[i+j+1] = a[i]
+            # the loop will break when i and j are at -1 i.e. behind zero.
+            if j==-1 or i >= 0 and nums1[i] > nums2[j]: # and has higher precedence
+                nums1[i+j+1] = nums1[i] # i + j + 1 = k iterator for merged array
                 i -= 1
             else:
-                a[i+j+1] = b[j]
+                nums1[i+j+1] = nums2[j]
                 j -= 1
                 
             
