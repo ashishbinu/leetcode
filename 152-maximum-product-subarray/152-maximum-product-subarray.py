@@ -1,5 +1,6 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
+        # dp with space optimisation
         n = len(nums)
         a,b,c = 1,1,1 # a = dp[i-1], b = min_dp[i-1], c = dp[i]
         res = -math.inf
@@ -7,7 +8,7 @@ class Solution:
             c = max(a*v,b*v,v)
             b = min(a*v,b*v,v)
             a = c
-            res = max(res,c)
+            if c > res: res = c
         return res
     
         # # dp approach
