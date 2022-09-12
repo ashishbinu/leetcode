@@ -6,8 +6,9 @@ class Solution:
         dp[0] = True
         for i in range(1,n):
             for j in reversed(range(i)):
-                dp[i] = dp[j] and j + nums[j] >= i
-                if dp[i]: break
+                if dp[j] and j + nums[j] >= i:
+                    dp[i] = True
+                    break
                     
         return dp[-1]
     
