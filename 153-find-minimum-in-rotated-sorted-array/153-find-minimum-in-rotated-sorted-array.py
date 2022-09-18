@@ -3,7 +3,7 @@ class Solution:
         # better solution
         n = len(nums)
         l,r = -1,n
-        x = nums[-1] + 1
+        x = nums[-1] + 1 # nth index element
         while l+1<r:
             m = (l+r)//2
             if nums[m] < x : r = m
