@@ -10,7 +10,7 @@ class Solution:
                 l = m
         a = r if -1 < r < n and nums[r] == target else -1
         
-        l,r = -1,n
+        l,r = a,n
         while l + 1 < r:
             m = l + (r - l)//2
             if nums[m] <= target:
