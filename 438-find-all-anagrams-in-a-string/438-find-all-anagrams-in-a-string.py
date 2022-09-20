@@ -4,30 +4,31 @@ class Solution:
         res = []
         if n > N: return res
         
-        pcnt = {}
-        for v in p:
-            if v not in pcnt: pcnt[v] = 0
-            pcnt[v] += 1
+        freq_p = defaultdict(int)
+        window = defaultdict(int) # n length string(window) in s
         
-        scnt = {} # n length string
         for i in range(n):
-            if s[i] not in pcnt: continue
-            if s[i] not in scnt: scnt[s[i]] = 0
-            scnt[s[i]] += 1
+            freq_p[p[i]] += 1
+            window[s[i]] += 1
         
-        prev_anag = False
-        if scnt == pcnt:
-            res.append(0)
-            prev_anag = True
+        is_anagram = window == freq_p
+        if is_anagram: res.append(0)
+            
         for j in range(n,N):
-            i = j - n + 1
-            if s[i-1] in pcnt: scnt[s[i-1]] -= 1
-            if s[j] in pcnt:
-                if s[j] not in scnt: scnt[s[j]] = 0
-                scnt[s[j]] += 1
-            if (prev_anag and s[i-1] == s[j]) or pcnt == scnt:
-                res.append(i)
-            else:
-                prev_anag = False
+            # This is_anagram here represents if the previous window value was anagram or not
+            
+            i = j - n # i represents previous windows starting position
+            window[s[i]] -= 1
+            if window[s[i]]==0: del window[s[i]]
+            window[s[j]] += 1
+            
+            
+            # hashtable comparison will take O(1)
+            # as max number of comparison is 26 (only lower case alphabets)
+            is_anagram = (is_anagram and s[i]==s[j]) or freq_p==window
+            
+            if is_anagram: res.append(i+1)
+            else: is_anagram = False
+                
         return res
             
