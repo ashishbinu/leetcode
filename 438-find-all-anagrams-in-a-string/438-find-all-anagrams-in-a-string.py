@@ -1,7 +1,7 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         # using arraylist
-        def idx(key): return ord(key) - ord('a')
+        def idx(key): return ord(key) - 97
         
         n,N = len(p),len(s)
         res = []
