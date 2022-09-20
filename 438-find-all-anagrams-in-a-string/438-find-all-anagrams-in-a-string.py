@@ -4,6 +4,7 @@ class Solution:
         res = []
         if n > N: return res
         
+        # we can replace these dict with array of 26 length
         freq_p = defaultdict(int)
         window = defaultdict(int) # n length string(window) in s
         
@@ -19,8 +20,9 @@ class Solution:
             
             i = j - n # i represents previous windows starting position
             window[s[i]] -= 1
-            if window[s[i]]==0: del window[s[i]]
             window[s[j]] += 1
+            
+            if window[s[i]]==0: del window[s[i]] # remove character from dict if value is zero
             
             
             # hashtable comparison will take O(1)
@@ -28,7 +30,6 @@ class Solution:
             is_anagram = (is_anagram and s[i]==s[j]) or freq_p==window
             
             if is_anagram: res.append(i+1)
-            else: is_anagram = False
                 
         return res
             
