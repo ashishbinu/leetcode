@@ -1,7 +1,6 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         # using arraylist
-        def idx(key): return ord(key) - 97
         
         n,N = len(p),len(s)
         res = []
@@ -13,8 +12,8 @@ class Solution:
         window = [0] * 26 # n length string(window) in s
         
         for i in range(n):
-            freq_p[idx(p[i])] += 1
-            window[idx(s[i])] += 1
+            freq_p[ord(p[i]) - 97] += 1
+            window[ord(s[i]) - 97] += 1
         
         is_anagram = window == freq_p
         if is_anagram: res.append(0)
@@ -23,8 +22,8 @@ class Solution:
             # This is_anagram here represents if the previous window value was anagram or not
             
             i = j - n # i represents previous windows starting position
-            window[idx(s[i])] -= 1
-            window[idx(s[j])] += 1
+            window[ord(s[i]) - 97] -= 1
+            window[ord(s[j]) - 97] += 1
             
             # freqp==window - O(1) - max number of comparison is 26 (only lower case alphabets)
             is_anagram = (is_anagram and s[i]==s[j]) or freq_p==window
