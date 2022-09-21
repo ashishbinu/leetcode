@@ -1,6 +1,6 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # using tuple as keys
+        # using alaphabet array countn as string - keys
         hashmap = defaultdict(list)
         for string in strs:
             ch_arr = [0]*26
