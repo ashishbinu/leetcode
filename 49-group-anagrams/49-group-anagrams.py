@@ -5,8 +5,16 @@ class Solution:
         for string in strs:
             ch_arr = [0]*26
             for ch in string: ch_arr[ord(ch)-ord('a')] += 1
-            hashmap[tuple(ch_arr)].append(string)
+            hashmap[''.join(map(chr,ch_arr))].append(string)
         return hashmap.values()
+        
+        # # using tuple as keys
+        # hashmap = defaultdict(list)
+        # for string in strs:
+        #     ch_arr = [0]*26
+        #     for ch in string: ch_arr[ord(ch)-ord('a')] += 1
+        #     hashmap[tuple(ch_arr)].append(string)
+        # return hashmap.values()
         
         
         # # using hash of character as keys
