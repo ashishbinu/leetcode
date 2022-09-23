@@ -15,11 +15,12 @@ class Solution:
             cur = cur.next
         
         n = len(arr)
-        for i in range(1 + n//2):
-            j = n - i - 1
-            if i >= j:
-                arr[i].next = None
-                break
+        i = 0
+        j = n - 1
+        while i < j:
             arr[i].next = arr[j] 
-            arr[j].next = arr[i+1]
+            i += 1
+            arr[j].next = arr[i]
+            j -= 1
+        arr[i].next = None
             
