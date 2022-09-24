@@ -1,6 +1,9 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        def max(a,b): return a if a > b else b
+        
         # dp[i] represents max money robbed from houses 0..=i such that no two robbed houses are adjacent
+        # time - O(n), space - O(n)
         n = len(nums)
         if n == 1: return nums[0]
         
