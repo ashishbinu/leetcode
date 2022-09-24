@@ -5,13 +5,16 @@ class Solution:
         if n < 1: return 0
         if n == 1: return nums[0]
         
-        dp = [0] * n
+        a,b = 0,0 # dp[i-2], dp[i-1]
         for i in range(n-1):
-            dp[i] = max(dp[i-2] + nums[i], dp[i-1])
-        a = dp[n-2]    
-        dp = [0] * n
-        for i in range(1,n):
-            dp[i] = max(dp[i-2] + nums[i], dp[i-1])
+            a,b = b,max(a + nums[i], b)
             
-        return max(a,dp[n-1])
+        res = b  # dp[n-2] - represents max money robbed from house 0..=n-2
+        a,b = 0,0
+        for i in range(1,n):
+            a,b = b,max(a + nums[i], b)
+            
+        # b = dp[n-2] - represents max money robbed from house 1..=n-1
+            
+        return max(res,b)
         
