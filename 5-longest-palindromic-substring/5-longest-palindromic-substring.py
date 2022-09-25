@@ -1,38 +1,26 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        # time - O(n^2)
+        # time - O(n^2), space - O(1)
+        # iterator is mid of palindrome and expanding on both sides
+        
+        def expand_from_mid(l,r,s): # it expands from l and r till its palindrome
+            while l >= 0 and r < n:
+                if s[l] != s[r]: break
+                l -= 1
+                r += 1
+            return l+1,r-1
+        
         n = len(s)
-        best_l = 0
-        best_r = 0
-        best_len = 1
-        for i in range(n):
-            l,r = i,i
-            while l >= 0 and r < n:
-                if s[l] != s[r]: break
-                l -= 1
-                r += 1
-            l += 1
-            r -= 1
-            length = r - l + 1
-            if length > best_len:
-                best_len = length
-                best_l,best_r = l,r
-            
+        L = R = 0
         for i in range(n-1):
-            l,r = i,i+1
-            while l >= 0 and r < n:
-                if s[l] != s[r]: break
-                l -= 1
-                r += 1
-            l += 1
-            r -= 1
-            length = r - l + 1
-            if length > best_len:
-                best_len = length
-                best_l,best_r = l,r
+            for j in [0,1]: # it handles both cases where mid is single element or double
+                l,r = expand_from_mid(i,i + j,s)
+                if r - l > R - L: L,R = l,r
             
-        return s[best_l:best_r+1] 
+        return s[L:R+1] 
     
+        # DP with dp[l][r] (represents if l..=r substring is palindrome or not) works
+        
         # # DP don't know if my logic will work or not
         # n = len(s)
         # # dp[i] represents max length substring palindrome such that i^th character is the last character
