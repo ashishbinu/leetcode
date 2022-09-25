@@ -1,25 +1,28 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        # All solutions
+        # https://zkf85.github.io/2019/03/26/leetcode-005-longest-palindrome
+        
         # time - O(n^2), space - O(1)
         # iterator is mid of palindrome and expanding on both sides
-        
-        def expand_from_mid(l,r,s): # it expands from l and r till its palindrome
-            while l >= 0 and r < n:
-                if s[l] != s[r]: break
-                l -= 1
-                r += 1
-            return l+1,r-1
-        
         n = len(s)
         L = R = 0
         for i in range(n-1):
             for j in [0,1]: # it handles both cases where mid is single element or double
-                l,r = expand_from_mid(i,i + j,s)
+                
+                # it expands from l and r till its palindrome
+                l,r = i,i+j
+                while l >= 0 and r < n and s[l] == s[r]:
+                    l -= 1
+                    r += 1
+                l,r = l+1,r-1
+                
                 if r - l > R - L: L,R = l,r
             
         return s[L:R+1] 
     
-        # DP with dp[l][r] (represents if l..=r substring is palindrome or not) works
+        # DP solution 1 : with dp[l][r] (represents if l..=r substring is palindrome or not) works
+        # DP solution 2:  Reverse the string s to s' . Now find longest common substring between s and s'. so dp[i][j] represents length of max substring in s[0..=i] and s'[0..=j]
         
         # # DP don't know if my logic will work or not
         # n = len(s)
