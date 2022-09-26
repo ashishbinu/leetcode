@@ -12,11 +12,8 @@ class Solution:
         a,b = headA,headB
         if a is None or b is None: return None
         while a != b: # when both a = b = None implies no intersection
-            a = a.next
-            b = b.next
-            if a is None and b is None: return None
-            if a is None: a = headB
-            if b is None: b = headA
+            a = a.next if a else headB
+            b = b.next if b else headA
         return a
     
         # # time - O(m+n), space - O(m)
