@@ -11,12 +11,9 @@ class Solution:
         # time - O(m+n), space - O(1)
         a,b = headA,headB
         if a is None or b is None: return None
-        while a != b: 
-            a = a.next
-            b = b.next
-            if a is None and b is None: return None # there is no intersection
-            if a is None: a = headB
-            if b is None: b = headA
+        while a != b: # when both a = b = None implies no intersection
+            a = headB if a is None else a.next
+            b = headA if b is None else b.next
         return a
     
         # # time - O(m+n), space - O(m)
