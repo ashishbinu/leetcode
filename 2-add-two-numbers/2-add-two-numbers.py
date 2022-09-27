@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        # # time - O(m + n), space - O(1)
+        # # time - O(max(m,n)), space - O(1)
         a,b = l1,l2
         start = None
         end = None
@@ -15,8 +15,7 @@ class Solution:
             tmp = carry
             if a: tmp += a.val
             if b: tmp += b.val
-            carry = tmp // 10
-            tmp %= 10
+            carry,tmp = divmod(tmp,10)
             
             if a: a.val = tmp
             if b: b.val = tmp
@@ -29,7 +28,7 @@ class Solution:
         return start
         
         
-        # # time - O(m + n), space - O(m + n)
+        # # time - O(max(m,n)), space - O(max(m,n)+1)
         # a,b = l1,l2
         # c = l3 = ListNode() # dummy head
         # carry = 0
