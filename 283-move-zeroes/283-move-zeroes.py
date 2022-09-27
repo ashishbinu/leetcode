@@ -3,5 +3,5 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        nums.sort(key=lambda x: 0 if x==0 else -1)
+        nums.sort(key=lambda x: x==0)
         
