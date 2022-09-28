@@ -13,9 +13,7 @@ class Solution:
             
         cnt = N - n
         dummy = cur = ListNode(-1,head) # dummy head
-        while cnt:
-            cnt -= 1
-            cur=cur.next
+        for _ in range(cnt): cur=cur.next
             
         cur.next = cur.next.next
         return dummy.next
