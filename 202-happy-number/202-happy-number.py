@@ -1,6 +1,6 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def sum_of_digit_squares(n):
+        def next(n): # sum of square of digit function
             s = 0
             while n:
                 n,d = divmod(n,10)
@@ -8,19 +8,21 @@ class Solution:
             return s
         
         # time - O(n), space - O(1)
-        s = f = n
-        while f != 1:
-            s = sum_of_digit_squares(s)  # s = s.next
-            f = sum_of_digit_squares(f)
-            f = sum_of_digit_squares(f)  # f = f.next.next
-            if s == f and s != 1: return False      # cycle detected
-        return True
+        
+        s = next(n)
+        f = next(next(n))
+        
+        while s != f:
+            s = next(s)        # s = s.next
+            f = next(next(f))  # f = f.next.next
+            
+        return f == 1
                 
         # # time - O(n), space - O(n)
         # memo = set()
         # while n != 1:
         #     memo.add(n)
-        #     n = sum_of_digit_squares(n)
+        #     n = next(n)
         #     if n in memo: return False
         # return True
             
