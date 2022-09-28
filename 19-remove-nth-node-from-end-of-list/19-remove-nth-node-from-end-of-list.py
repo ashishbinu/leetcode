@@ -11,9 +11,8 @@ class Solution:
             N += 1
             cur=cur.next
             
-        cnt = N - n
         dummy = cur = ListNode(-1,head) # dummy head
-        for _ in range(cnt): cur=cur.next
+        for _ in range(N-n): cur=cur.next
             
         cur.next = cur.next.next
         return dummy.next
