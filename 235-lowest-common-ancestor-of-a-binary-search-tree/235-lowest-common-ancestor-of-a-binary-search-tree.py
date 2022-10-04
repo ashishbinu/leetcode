@@ -11,9 +11,9 @@ class Solution:
         # time - O(height of tree), space - O(1)
         # only works for bst
         
-        large,small = max(p.val,q.val),min(p.val,q.val)
-        while root and not(small <= root.val <= large):
-            root = (root.left,root.right)[root.val < small]
+        l,r = (p,q) if p.val < q.val else (q,p)
+        while root and not(l.val <= root.val <= r.val):
+            root = (root.left,root.right)[root.val < l.val]
         return root
         
         # # this works for binary tree also
