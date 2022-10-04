@@ -10,10 +10,10 @@ class Solution:
         
         # time - O(height of tree), space - O(1)
         # only works for bst
-        while root:
-            if p.val <= root.val <= q.val or q.val <= root.val <= p.val: return root
-            root = root.left if p.val < root.val else root.right
-        return None
+        a,b = (p,q) if p.val < q.val else (q,p)
+        while root and not (a.val <= root.val <= b.val):
+            root = root.left if a.val < root.val else root.right
+        return root
         
         # # this works for binary tree also
         # # time - O(n) , space - O(height of the tree)
