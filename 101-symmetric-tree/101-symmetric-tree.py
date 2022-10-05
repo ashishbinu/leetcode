@@ -15,10 +15,7 @@ class Solution:
                 pal.append(node and node.val) # short circuit
                 if node: q += [node.left,node.right]
                     
-            n = len(pal)        
-            for i in range(n//2):
-                if pal[i] != pal[n-1-i]:
-                    return False
+            if pal != pal[::-1]: return False
         return True
     
         # # time - O(n), space - O(n + h) - recursive
