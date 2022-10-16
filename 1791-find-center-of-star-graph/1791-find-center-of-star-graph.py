@@ -1,9 +1,6 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        ecnt = defaultdict(int)
-        for u,v in edges:
-            if u != v:
-                ecnt[u] += 1
-                ecnt[v] += 1
-        return max(ecnt, key=lambda x: ecnt[x])
-        
+        # Given graph is a valid star so common vertex between any two edge is center
+        a,b = edges[0]
+        c,d = edges[-1]
+        return a if a==c or a==d else b
