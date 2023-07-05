@@ -10,7 +10,6 @@ class Solution:
             while l < r:
                 a,b,c = nums[l], nums[r], nums[i]
                 if a + b == -c:
-                    a,b,c = sorted((a,b,c))
                     if (a,b,c) not in mem:
                         ans.append([a,b,c])
                     mem.add((a,b,c))
