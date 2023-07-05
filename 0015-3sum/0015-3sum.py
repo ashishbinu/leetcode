@@ -15,6 +15,7 @@ class Solution:
                         ans.append([a,b,c])
                     mem.add((a,b,c))
                     l +=1 
+                    r -=1
                 elif a + b > -c: r -= 1
                 else: l += 1
         
