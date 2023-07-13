@@ -1,20 +1,13 @@
 impl Solution {
     pub fn is_anagram(s: String, t: String) -> bool {
-        if s.len() != t.len() {
-            return false;
-        }
-        let mut counter: [i32; 26] = [0; 26];
+        let mut counter = [0; 26];
         
-        for (a,b) in s.bytes().zip(t.bytes()) {
-            counter[(a - 'a' as u8) as usize] += 1;
-            counter[(b - 'a' as u8) as usize] -= 1;
-        }
+        let s = s.bytes();
+        let t = t.bytes();
         
-        for i in counter {
-            if i != 0 {
-                return false;
-            }
-        }
-        return true;
+        s.for_each(|c| {counter[c as usize- 'a' as usize] += 1;});
+        t.for_each(|c| {counter[c as usize- 'a' as usize] -= 1;});
+        
+        counter.iter().all(|&i| i == 0 )
     }
 }
