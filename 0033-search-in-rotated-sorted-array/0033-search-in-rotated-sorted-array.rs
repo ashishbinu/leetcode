@@ -6,7 +6,6 @@ impl Solution {
         let mut r = n;
         
         let condition = |i|  {
-            let first = nums[0];
             let last = nums[(n-1) as usize];
             let curr = nums[i];
             
