@@ -8,13 +8,22 @@ impl Solution {
         let condition = |i|  {
             let first = nums[0];
             let last = nums[(n-1) as usize];
+            let curr = nums[i];
             
-            if target <= last {
-                target <= nums[i] && nums[i] <= last
-            }
-            else {
-                target <= nums[i] || nums[i] <= last
-            }
+            // if target <= last {
+            //     target <= curr && curr <= last
+            // }
+            // else {
+            //     target <= curr || curr <= last
+            // }
+            
+            // optimised
+            let Z = target <= last;
+            let X = target <= curr;
+            let Y = curr <= last;
+            
+            (Z && X && Y) || (!Z && X) || (!Z && Y)
+            
         };
         
         while r-l > 1 {
