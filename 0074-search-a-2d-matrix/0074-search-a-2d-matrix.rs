@@ -21,7 +21,7 @@ impl Solution {
             }
         }
         
-        !(r == n || matrix[r as usize / cols][r as usize % cols] != target)
+        Some(target) == matrix.get(r as usize / cols).map(|col| *col.get(r as usize % cols).unwrap())
         
     }
 }
