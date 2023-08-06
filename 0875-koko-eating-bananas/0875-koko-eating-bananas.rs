@@ -4,14 +4,8 @@ impl Solution {
         let mut r = *piles.iter().max().unwrap();
         
         let f = |k| {
-            let mut hrs = 0;
-            for v in &piles {
-                hrs += (*v - 1)/k + 1; // ceil (v/k) = (v + k -1) /k
-                if hrs > h {
-                    return false;
-                }
-            }
-            return true;
+            let hrs = piles.iter().fold(0i64, |acc, v| acc + (*v as i64 - 1) / k as i64 + 1);
+            hrs <= h as i64
         };
         
         while r -l > 1 {
